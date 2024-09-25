@@ -1,5 +1,18 @@
 local wezterm = require 'wezterm';
 
+local target = wezterm.target_triple
+-- Declare a variable for the window background image path
+local window_background_image = nil
+
+-- Set the background image based on the OS
+if string.find(target, "linux") then
+  window_background_image = "/home/keagane/.config/wezterm/pic.jpg"
+elseif string.find(target, "windows") then
+  window_background_image = "C:/Users/Keagan/.config/wezterm/pic.jpg"
+elseif string.find(target, "darwin") then
+  window_background_image = "/Users/keagan/.config/wezterm/pic.jpg"
+end
+
 return {
     font_size = 14.0,
 
@@ -31,9 +44,17 @@ return {
         },
     },
 
-    -- window_background_opacity = 0.9,
-    window_background_image = "C:/Users/Keagan/.config/wezterm/pic.jpg",
-    use_fancy_tab_bar = false,
+    window_background_image = window_background_image,
+    use_fancy_tab_bar = true,
+
+    -- Adjust image opacity, brightness, and saturation
+    window_background_image_hsb = {
+      brightness = 0.6,  -- 1.0 means no change to brightness
+      hue = 1.0,         -- 1.0 means no change to hue
+      saturation = 1.0,  -- 1.0 means no change to saturation
+      -- Set opacity (0.0 is fully transparent, 1.0 is fully opaque)
+      alpha = 1.0,       -- Set the image to be slightly opaque
+    },
 
     keys = {
         { key = "t",     mods = "CTRL|SHIFT", action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
