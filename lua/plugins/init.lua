@@ -12,21 +12,4 @@ return {
       require "configs.lspconfig"
     end,
   },
-
-  -- {
-  --   "ThePrimeagen/harpoon",
-  --   config = function ()
-  --     require("harpoon").setup()
-  --   end
-  -- }
-
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
 }

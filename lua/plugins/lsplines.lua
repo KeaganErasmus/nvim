@@ -14,8 +14,8 @@ return {
     })
 
     -- Toggle command for manual control if needed
-    vim.keymap.set("n", "<leader>lt", function()
-      require("lsp_lines").toggle()
-    end, { desc = "Toggle LSP Lines" })
+    -- vim.keymap.set("n", "<leader>lt", function()
+    --   require("lsp_lines").toggle()
+    -- end, { desc = "Toggle LSP Lines" })
   end,
 }
