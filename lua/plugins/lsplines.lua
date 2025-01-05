@@ -10,6 +10,7 @@ return {
       signs = false,        -- Disable gutter signs
       underline = false,    -- Disable underlining
       virtual_lines = true, -- Enable lsp_lines by default
+      wrap = true
     })
 
     -- Toggle command for manual control if needed

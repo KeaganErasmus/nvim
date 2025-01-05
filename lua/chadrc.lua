@@ -12,8 +12,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		if client then
-			-- Uncomment to show notification when LSP is fully attached
-			-- vim.notify(client.name .. " LSP is fully loaded!", vim.log.levels.INFO, { timeout = 3000 })
+			vim.notify(client.name .. " LSP is fully loaded!", vim.log.levels.INFO, { timeout = 3000 })
 		end
 	end,
 })
