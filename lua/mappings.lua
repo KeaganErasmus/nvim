@@ -15,7 +15,7 @@ map('n', 'ga', ":lua require('harpoon.mark').add_file()<CR>", { desc = "Harpoon 
 map('n', 'gm', ":lua require('harpoon.ui').toggle_quick_menu()<CR>", { desc = "Harpoon list"})
 
 -- LSP lines 
-map('n', '<leader>tl', ':lua require("lsp_lines").toggle()<CR>', opts)
+vim.keymap.set('n', '<leader>tl', ':lua require("lsp_lines").toggle()<CR>', { noremap = true, silent = true, desc = "Toggle lsp_lines" })
 
 -- more git binds
 map("n", "<leader>gb", ":Git blame<CR>", { desc = "Git blame", silent = true })

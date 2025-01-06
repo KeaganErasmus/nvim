@@ -1,4 +1,4 @@
-return {
+local plugins = {
   {
     "stevearc/conform.nvim",
     event = 'BufWritePre', -- uncomment for format on save
@@ -10,6 +10,12 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
+      -- require("lsp_lines").setup()
     end,
   },
+
+  {
+    import = "plugins.lsp_lines"
+  }
 }
+return plugins
