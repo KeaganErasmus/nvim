@@ -1,10 +1,10 @@
 return {
-    {
-        "williamboman/mason.nvim",
-        opts = {
-            ensure_installed = {
-                "clangd"
-            }
-        }
-    }
+    -- {
+    --     "williamboman/mason.nvim",
+    --     opts = {
+    --         ensure_installed = {
+    --             "clangd"
+    --         }
+    --     }
+    -- }
 }
