@@ -12,14 +12,14 @@ return {
     },
   },
   config = function()
-  local capabilities = require('blink.cmp').get_lsp_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-  require("lspconfig").lua_ls.setup { capabilities }
-  require("lspconfig").ts_ls.setup {
-    capabilities
-    -- filetypes = {"typescript"},
-    -- cmd = {"typescript-language-server", "--stdio"}
-  }
-  require("lspconfig").ols.setup { capabilities }
-end
+    require("lspconfig").lua_ls.setup { capabilities }
+    require("lspconfig").ts_ls.setup {
+      capabilities
+      -- filetypes = {"typescript"},
+      -- cmd = {"typescript-language-server", "--stdio"}
+    }
+    require("lspconfig").ols.setup { capabilities }
+  end
 }
