@@ -20,5 +20,6 @@ return {
     -- filetypes = {"typescript"},
     -- cmd = {"typescript-language-server", "--stdio"}
   }
+  require("lspconfig").ols.setup { capabilities }
 end
 }
