@@ -9,6 +9,19 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 
 vim.api.nvim_set_keymap("n", "qf", ":copen<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "qq", ":cclose<CR>", { noremap = true, silent = true })
+
+-- some keybinds to make deving easier
+--
+-- Run build.bat with F5
+vim.keymap.set("n", "<F5>", function()
+  vim.cmd("!cmd /c build.bat")
+end, { desc = "Run build.bat" })
+
+-- Run run.bat with F6
+vim.keymap.set("n", "<F6>", function()
+  vim.cmd("!cmd /c run.bat")
+end, { desc = "Run run.bat" })
+
 -- telescope keybinds
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
