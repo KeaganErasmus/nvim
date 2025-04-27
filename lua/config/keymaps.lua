@@ -7,8 +7,14 @@ vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")
 
-vim.api.nvim_set_keymap("n", "qf", ":copen<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "qq", ":cclose<CR>", { noremap = true, silent = true })
+function toggle_quickfix()
+  if not vim.tbl_isempty(vim.fn.getwininfo()) and vim.bo.buftype == "quickfix" then
+    vim.cmd("cclose")
+  else
+    vim.cmd("copen")
+  end
+end
+vim.api.nvim_set_keymap("n", "<leader>qf", ":lua toggle_quickfix()<CR>", { silent = true })
 
 -- some keybinds to make deving easier
 --
