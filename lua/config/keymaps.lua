@@ -6,6 +6,12 @@
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")
+vim.keymap.set("n", "<leader>\\", ":vsplit<CR>", { noremap = false, silent = true})
+
+vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true })
 
 function toggle_quickfix()
   if not vim.tbl_isempty(vim.fn.getwininfo()) and vim.bo.buftype == "quickfix" then
@@ -74,14 +80,14 @@ end, { desc = "Add file to harppon" })
 
 vim.keymap.set("n", "ge", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Show harpoon files" })
 
-vim.keymap.set("n", "<C-q>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<C-w>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<C-e>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<C-t>", function() harpoon:list():select(4) end)
+vim.keymap.set("n", "<C-1>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<C-2>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<C-3>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<C-4>", function() harpoon:list():select(4) end)
 
 -- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", "<C-h>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-l>", function() harpoon:list():next() end)
+-- vim.keymap.set("n", "<A-h>", function() harpoon:list():prev() end)
+-- vim.keymap.set("n", "<C-l>", function() harpoon:list():next() end)
 
 vim.api.nvim_create_autocmd("WinLeave", {
     callback = function()
