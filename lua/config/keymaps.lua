@@ -41,6 +41,8 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>cd", "<CMD>Copilot disable<CR>", { desc = "Disable copilot" })
+vim.keymap.set("n", "<leader>ce", "<CMD>Copilot enable<CR>", { desc = "Enable copilot" })
 
 -- harpoon keybinds
 local harpoon = require("harpoon")
