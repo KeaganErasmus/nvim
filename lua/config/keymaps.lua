@@ -6,12 +6,13 @@
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")
-vim.keymap.set("n", "<leader>\\", ":vsplit<CR>", { noremap = false, silent = true})
+vim.keymap.set("n", "<leader>\\", ":vsplit<CR>", { noremap = false, silent = true })
 
 vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true })
+vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear highlights" })
 
 function toggle_quickfix()
   if not vim.tbl_isempty(vim.fn.getwininfo()) and vim.bo.buftype == "quickfix" then
@@ -20,7 +21,8 @@ function toggle_quickfix()
     vim.cmd("copen")
   end
 end
-vim.api.nvim_set_keymap("n", "<leader>qf", ":lua toggle_quickfix()<CR>", { silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>q", ":lua toggle_quickfix()<CR>", { silent = true })
 
 -- some keybinds to make deving easier
 --
@@ -52,32 +54,32 @@ harpoon:setup()
 -- REQUIRED
 
 vim.keymap.set("n", "ga", function()
-    harpoon:list():add()
+  harpoon:list():add()
 
-    -- Create floating window config
-    local buf = vim.api.nvim_create_buf(false, true)
-    local width = 30
-    local height = 1
-    local opts = {
-        relative = "editor",
-        width = width,
-        height = height,
-        row = 2,
-        col = vim.o.columns - width - 2,
-        style = "minimal",
-        border = "rounded"
-    }
+  -- Create floating window config
+  local buf = vim.api.nvim_create_buf(false, true)
+  local width = 30
+  local height = 1
+  local opts = {
+    relative = "editor",
+    width = width,
+    height = height,
+    row = 2,
+    col = vim.o.columns - width - 2,
+    style = "minimal",
+    border = "rounded"
+  }
 
-    vim.api.nvim_open_win(buf, false, opts)
+  vim.api.nvim_open_win(buf, false, opts)
 
-    local file = vim.fn.expand("%:t")
-    local msg = "📌 Added: " .. file
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { msg })
+  local file = vim.fn.expand("%:t")
+  local msg = "📌 Added: " .. file
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, { msg })
 
-    -- Automatically close after 1.5 seconds
-    vim.defer_fn(function()
-        pcall(vim.api.nvim_buf_delete, buf, { force = true })
-    end, 1500)
+  -- Automatically close after 1.5 seconds
+  vim.defer_fn(function()
+    pcall(vim.api.nvim_buf_delete, buf, { force = true })
+  end, 1500)
 end, { desc = "Add file to harppon" })
 
 vim.keymap.set("n", "ge", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Show harpoon files" })
@@ -92,11 +94,11 @@ vim.keymap.set("n", "<C-4>", function() harpoon:list():select(4) end)
 -- vim.keymap.set("n", "<C-l>", function() harpoon:list():next() end)
 
 vim.api.nvim_create_autocmd("WinLeave", {
-    callback = function()
-        local win = vim.api.nvim_get_current_win()
-        local buf = vim.api.nvim_win_get_buf(win)
-        local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-    end
+  callback = function()
+    local win = vim.api.nvim_get_current_win()
+    local buf = vim.api.nvim_win_get_buf(win)
+    local ft = vim.api.nvim_buf_get_option(buf, "filetype")
+  end
 })
 -- Tab keymaps
 -- Move to previous/next
