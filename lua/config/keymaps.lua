@@ -121,3 +121,7 @@ map('n', '<A-w>', '<Cmd>BufferClose<CR>', opts)
 -- Re-order to previous/next
 -- map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
 -- map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
+
+-- Git keymaps
+vim.keymap.set("n", "<leader>gb", "<CMD>G blame<CR>", { desc = "Git blame" })
+vim.keymap.set("n", "<leader>gd", "<CMD>G diff<CR>", { desc = "Git diff" })
