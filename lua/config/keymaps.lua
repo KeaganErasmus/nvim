@@ -125,3 +125,7 @@ map('n', '<A-w>', '<Cmd>BufferClose<CR>', opts)
 -- Git keymaps
 vim.keymap.set("n", "<leader>gb", "<CMD>G blame<CR>", { desc = "Git blame" })
 vim.keymap.set("n", "<leader>gd", "<CMD>G diff<CR>", { desc = "Git diff" })
+vim.keymap.set("n", "<leader>gl", "<CMD>G log --oneline<CR>", { desc = "Git log" })
+vim.keymap.set("n", "<leader>ga", "<CMD>G add .<CR>", { desc = "Git add" })
+vim.keymap.set("n", "<leader>gc", "<CMD>G commit<CR>", { desc = "Git commit" })
+vim.keymap.set("n", "<leader>gg", "<CMD>G commit --amend<CR>", { desc = "Git git commit --amend" })
