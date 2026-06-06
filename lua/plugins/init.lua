@@ -1,3 +1,4 @@
+require('plugins.snacks')
 require('plugins.gruvbox')
 require('plugins.tabline')
 require('plugins.mason')
