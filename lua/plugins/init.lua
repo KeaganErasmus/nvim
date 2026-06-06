@@ -1,0 +1,5 @@
+require('plugins.gruvbox')
+require('plugins.tabline')
+require('plugins.mason')
+require('plugins.telescope')
+require('plugins.lsp-config')
