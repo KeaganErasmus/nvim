@@ -88,10 +88,12 @@ vim.pack.add({
 	"https://github.com/nvim-lualine/lualine.nvim",
 
 	"https://github.com/tribela/transparent.nvim",
+	"https://github.com/windwp/nvim-autopairs",
 })
 require("fzf-lua").setup({ fzf_colors = true })
 require("mini.completion").setup({})
 require("quicker").setup({})
 require("gitsigns").setup({})
+require("nvim-autopairs").setup()
 
 require("plugins")
