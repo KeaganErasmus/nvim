@@ -31,6 +31,9 @@ vim.keymap.set({ 'n' }, '<C-j>', '<C-w>j')
 vim.keymap.set({ 'n' }, '<C-k>', '<C-w>k')
 vim.keymap.set({ 'n' }, '<C-l>', '<C-w>l')
 
+vim.keymap.set({'n'}, 'td', '<cmd>TransparentDisable<CR>')
+vim.keymap.set({'n'}, 'te', '<cmd>TransparentEnable<CR>')
+
 -- vim.keymap.set('n', '<leader>e', vim.cmd.Lexplore)
 
 
@@ -42,6 +45,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   callback = function()
     vim.hl.on_yank()
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "snacks_picker_input" },
+  callback = function(args)
+    vim.b[args.buf].minicompletion_disable = true
   end,
 })
 
@@ -66,6 +76,10 @@ vim.pack.add({
   -- Git integration
   'https://github.com/lewis6991/gitsigns.nvim',
 
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/nvim-lualine/lualine.nvim',
+
+  'https://github.com/tribela/transparent.nvim',
 })
 require('fzf-lua').setup { fzf_colors = true }
 require('mini.completion').setup {}

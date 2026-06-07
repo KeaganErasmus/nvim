@@ -26,6 +26,7 @@ end)
 
 vim.keymap.set('n', '<leader>e', function()Snacks.explorer() end)
 vim.keymap.set('n', '<leader>ff', function()Snacks.picker.files() end)
+vim.keymap.set('n', '<leader>fg', function()Snacks.picker.grep() end)
 
 -- Git stuff
 vim.keymap.set("n", "<leader>gb", function()
