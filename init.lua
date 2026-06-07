@@ -67,6 +67,7 @@ end, { desc = 'Print the git blame for the current line' })
 -- See `:h :packadd`, `:h vim.pack`
 vim.cmd('packadd! nohlsearch')
 vim.pack.add({
+  'https://github.com/nvim-lua/plenary.nvim',
   -- Fuzzy picker
   'https://github.com/ibhagwan/fzf-lua',
   -- Autocompletion
