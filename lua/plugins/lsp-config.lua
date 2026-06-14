@@ -4,7 +4,8 @@ vim.pack.add({
 
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("clangd")
-vim.lsp.enable("stylua ")
+vim.lsp.enable("stylua")
+vim.lsp.enable("ols")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
