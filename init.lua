@@ -11,6 +11,14 @@ vim.o.list = true
 vim.o.confirm = true
 vim.o.tabstop = 4
 
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldcolumn = "0"
+vim.o.foldtext = ""
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 1
+vim.o.foldnestmax = 4
+
 -- Sync clipboard between OS and Neovim.
 vim.api.nvim_create_autocmd("UIEnter", {
 	callback = function()
