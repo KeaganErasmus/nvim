@@ -16,8 +16,8 @@ vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldcolumn = "0"
 vim.o.foldtext = ""
 vim.o.foldlevel = 99
-vim.o.foldlevelstart = 1
-vim.o.foldnestmax = 4
+-- vim.o.foldlevelstart = 1
+-- vim.o.foldnestmax = 4
 
 -- Sync clipboard between OS and Neovim.
 vim.api.nvim_create_autocmd("UIEnter", {
@@ -40,10 +40,11 @@ vim.keymap.set({ "n" }, "<C-j>", "<C-w>j")
 vim.keymap.set({ "n" }, "<C-k>", "<C-w>k")
 vim.keymap.set({ "n" }, "<C-l>", "<C-w>l")
 
-vim.keymap.set({ "n" }, "td", "<cmd>TransparentDisable<CR>")
-vim.keymap.set({ "n" }, "te", "<cmd>TransparentEnable<CR>")
+-- moving around buffers
+vim.keymap.set({ "n" }, "<A-l>", "<cmd>bnext<CR>")
+vim.keymap.set({ "n" }, "<A-h>", "<cmd>bprev<CR>")
 
--- vim.keymap.set('n', '<leader>e', vim.cmd.Lexplore)
+vim.keymap.set("n", "<leader>e", vim.cmd.Lexplore)
 
 -- AUTOCOMMANDS (EVENT HANDLERS)
 -- See `:h lua-guide-autocommands`, `:h autocmd`, `:h nvim_create_autocmd()`
@@ -95,7 +96,6 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-lualine/lualine.nvim",
 
-	"https://github.com/tribela/transparent.nvim",
 	"https://github.com/windwp/nvim-autopairs",
 })
 require("fzf-lua").setup({ fzf_colors = true })

@@ -5,14 +5,14 @@ vim.pack.add({
 require("snacks").setup({
 	bigfile = { enabled = true },
 	dashboard = { enabled = false },
-	explorer = { enabled = true },
+	-- explorer = { enabled = true },
 	indent = { enabled = true },
 	input = { enabled = true },
 	notifier = {
 		enabled = true,
 		timeout = 3000,
 	},
-	picker = { enabled = true },
+	-- picker = { enabled = true },
 	quickfile = { enabled = true },
 	scope = { enabled = true },
 	statuscolumn = { enabled = true },
@@ -23,15 +23,15 @@ vim.keymap.set("n", "<leader>tt", function()
 	Snacks.terminal()
 end)
 
-vim.keymap.set("n", "<leader>e", function()
-	Snacks.explorer()
-end)
-vim.keymap.set("n", "<leader>ff", function()
-	Snacks.picker.files()
-end)
-vim.keymap.set("n", "<leader>fg", function()
-	Snacks.picker.grep()
-end)
+-- vim.keymap.set("n", "<leader>e", function()
+-- 	Snacks.explorer()
+-- end)
+-- vim.keymap.set("n", "<leader>ff", function()
+-- 	Snacks.picker.files()
+-- end)
+-- vim.keymap.set("n", "<leader>fg", function()
+-- 	Snacks.picker.grep()
+-- end)
 
 -- Git stuff
 vim.keymap.set("n", "<leader>gb", function()
