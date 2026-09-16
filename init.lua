@@ -30,21 +30,33 @@ vim.api.nvim_create_autocmd("UIEnter", {
 -- See `:h vim.keymap.set()`, `:h mapping`, `:h keycodes`
 --
 -- Use <Esc> to exit terminal mode
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-vim.keymap.set({ "t", "i" }, "<C-h>", "<C-\\><C-n><C-w>h")
-vim.keymap.set({ "t", "i" }, "<C-j>", "<C-\\><C-n><C-w>j")
-vim.keymap.set({ "t", "i" }, "<C-k>", "<C-\\><C-n><C-w>k")
-vim.keymap.set({ "t", "i" }, "<C-l>", "<C-\\><C-n><C-w>l")
-vim.keymap.set({ "n" }, "<C-h>", "<C-w>h")
-vim.keymap.set({ "n" }, "<C-j>", "<C-w>j")
-vim.keymap.set({ "n" }, "<C-k>", "<C-w>k")
-vim.keymap.set({ "n" }, "<C-l>", "<C-w>l")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Terminal: exit to normal mode" })
+vim.keymap.set({ "t", "i" }, "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Go to left window" })
+vim.keymap.set({ "t", "i" }, "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Go to lower window" })
+vim.keymap.set({ "t", "i" }, "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Go to upper window" })
+vim.keymap.set({ "t", "i" }, "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Go to right window" })
+vim.keymap.set({ "n" }, "<C-h>", "<C-w>h", { desc = "Go to left window" })
+vim.keymap.set({ "n" }, "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+vim.keymap.set({ "n" }, "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+vim.keymap.set({ "n" }, "<C-l>", "<C-w>l", { desc = "Go to right window" })
+
+vim.api.nvim_set_keymap(
+	"n",
+	"<space>k",
+	"<cmd>lua vim.diagnostic.open_float()<CR>",
+	{ desc = "Show line diagnostics in a float" }
+)
 
 -- moving around buffers
-vim.keymap.set({ "n" }, "<A-l>", "<cmd>bnext<CR>")
-vim.keymap.set({ "n" }, "<A-h>", "<cmd>bprev<CR>")
+vim.keymap.set({ "n" }, "<A-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set({ "n" }, "<A-h>", "<cmd>bprev<CR>", { desc = "Previous buffer" })
 
-vim.keymap.set("n", "<leader>e", vim.cmd.Lexplore)
+vim.keymap.set({ "n" }, "<C-RIGHT>", "<cmd>vertical res +5<CR>", { desc = "Widen window" })
+vim.keymap.set({ "n" }, "<C-LEFT>", "<cmd>vertical res -5<CR>", { desc = "Narrow window" })
+vim.keymap.set({ "n" }, "<C-UP>", "<cmd>horizontal res -5<CR>", { desc = "Shrink window height" })
+vim.keymap.set({ "n" }, "<C-DOWN>", "<cmd>horizontal res +5<CR>", { desc = "Grow window height" })
+
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Lexplore)
 
 -- AUTOCOMMANDS (EVENT HANDLERS)
 -- See `:h lua-guide-autocommands`, `:h autocmd`, `:h nvim_create_autocmd()`
@@ -53,7 +65,7 @@ vim.keymap.set("n", "<leader>e", vim.cmd.Lexplore)
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	callback = function()
-		vim.hl.on_yank()
+		vim.hl.hl_op()
 	end,
 })
 
@@ -78,6 +90,7 @@ vim.api.nvim_create_user_command("GitBlameLine", function()
 	local filename = vim.api.nvim_buf_get_name(0)
 	print(vim.system({ "git", "blame", "-L", line_number .. ",+1", filename }):wait().stdout)
 end, { desc = "Print the git blame for the current line" })
+-- vim.keymap.set({ "n" }, "<leader>gbl", "<cmd>GitBlameLine<CR>")
 
 -- PLUGINS
 -- See `:h :packadd`, `:h vim.pack`
